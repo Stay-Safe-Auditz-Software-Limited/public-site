@@ -1,24 +1,32 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Why Stay Safe | Stay Safe',
-  description: 'Learn about the people-first approach in the Stay Safe public-site wireframe.',
+  title: 'About Auditz | Stay Safe Auditz Software',
+  description:
+    'Auditz helps businesses across New Zealand and Australia replace paper-based health and safety systems with organised digital processes.',
 })
 </script>
-
 <template>
-  <section class="page-intro section">
-    <p class="eyebrow">Why Stay Safe</p>
-    <h1>Safety software should support people, not create more work.</h1>
-    <p>
-      This space is ready for the approved Stay Safe story: who the team helps, the experience they
-      bring, and the principles that guide the product. Keep future claims specific, evidenced, and
-      approved before publishing.
-    </p>
-    <div class="statement-panel">
-      <p class="eyebrow">Design principle</p>
+  <div>
+    <section class="container page-hero">
+      <p class="eyebrow">STAY SAFE AUDITZ SOFTWARE</p>
+      <h1>
+        A simpler way
+        <br />
+        <span>to manage safety.</span>
+      </h1>
       <p>
-        Clear enough for the people doing the work. Useful enough for the people accountable for it.
+        Auditz helps businesses across New Zealand and Australia move away from paper-based health
+        and safety systems and formalise their processes.
       </p>
-    </div>
-  </section>
+      <p>
+        From training registers and equipment maintenance to document control and meeting minutes,
+        our focus is making everyday administration easier.
+      </p>
+      <NuxtLink to="/features" class="button button--primary">
+        Explore Auditz
+        <SiteIcon name="arrow" />
+      </NuxtLink>
+    </section>
+    <DemoCta />
+  </div>
 </template>

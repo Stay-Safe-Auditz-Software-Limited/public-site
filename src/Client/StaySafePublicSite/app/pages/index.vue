@@ -1,91 +1,180 @@
 <script setup lang="ts">
-import { implementationSteps, solutions } from '~/data/site'
-
+import { features } from '~/data/site'
 useSeoMeta({
-  title: 'Stay Safe | Practical safety systems for better work',
+  title: 'Auditz | Health and safety management without the paperwork',
   description:
-    'A public-site wireframe for Stay Safe: a clear, people-first way to introduce practical safety systems.',
+    'Replace paper-based health and safety processes with Auditz. Organise training, maintenance, documents and meetings for businesses in New Zealand and Australia.',
 })
 </script>
-
 <template>
   <div>
-    <section class="hero section section--tint">
-      <div class="hero__content">
-        <p class="eyebrow">Public website wireframe</p>
-        <h1>Safety work that feels clear, practical, and worth doing.</h1>
-        <p class="hero__lede">
-          Stay Safe helps teams build consistent safety habits without adding unnecessary
-          complexity.
-        </p>
-        <div class="hero__actions">
-          <NuxtLink class="button button--primary" to="/contact">Start a conversation</NuxtLink>
-          <NuxtLink class="button button--secondary" to="/solutions">Explore the approach</NuxtLink>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="status-dot" />
+            PRACTICAL SOFTWARE. SAFER WORK.
+          </p>
+          <h1>
+            Health & safety.
+            <br />
+            Less paperwork.
+            <br />
+            <span>More peace of mind.</span>
+          </h1>
+          <p class="hero-lede">
+            Bring your health and safety processes together in one easy-to-use system. Less time
+            managing paper. More time getting on with the job.
+          </p>
+          <div class="hero-actions">
+            <NuxtLink to="/contact" class="button button--primary">
+              Book a demo
+              <SiteIcon name="arrow" />
+            </NuxtLink>
+            <NuxtLink to="/features" class="button button--secondary">
+              Explore the features
+            </NuxtLink>
+          </div>
+          <p class="hero-footnote">
+            <span aria-hidden="true">✓</span>
+            For businesses across New Zealand & Australia
+          </p>
         </div>
-      </div>
-
-      <div class="hero__visual" aria-label="Illustrative product dashboard placeholder" role="img">
-        <div class="visual-card visual-card--wide">
-          <span class="visual-label">Today at a glance</span>
-          <strong>Clear priorities. Confident action.</strong>
-          <div class="visual-bars" aria-hidden="true"><i /><i /><i /></div>
-        </div>
-        <div class="visual-card visual-card--small">
-          <span class="visual-label">Follow-up</span>
-          <strong>One next step</strong>
+        <div class="hero-product">
+          <div class="product-note">
+            <span class="status-dot" />
+            A clearer view of your health & safety
+          </div>
+          <img
+            class="device-hero-image"
+            src="/images/laptop-phone-clean.png"
+            alt="Auditz dashboard displayed on a laptop beside the mobile vehicle inspection app"
+            width="1536"
+            height="1024"
+            fetchpriority="high"
+          />
+          <div class="product-caption">
+            <span>YOUR WORKDAY, MORE ORGANISED</span>
+            <span>Current app · device mockup</span>
+          </div>
         </div>
       </div>
     </section>
-
-    <section class="section intro">
-      <div>
-        <p class="eyebrow">The promise</p>
-        <h2>Make safety part of how good work gets done.</h2>
+    <div class="benefit-strip">
+      <div class="container">
+        <span>
+          <SiteIcon name="document" />
+          Replace paper-based systems
+        </span>
+        <span>
+          <SiteIcon name="check" />
+          Formalise your processes
+        </span>
+        <span>
+          <SiteIcon name="people" />
+          Built for any industry
+        </span>
       </div>
-      <p>
-        This wireframe gives Stay Safe a calm, direct public presence. It leads with the outcome for
-        teams, then offers a straightforward path to learn more or speak with someone.
-      </p>
-    </section>
-
-    <section class="section section--dark">
-      <div class="section-heading">
-        <p class="eyebrow">What the site explains</p>
-        <h2>Three clear reasons to choose a better safety system.</h2>
-      </div>
-      <div class="solution-grid">
-        <article v-for="(solution, index) in solutions" :key="solution.title" class="solution-card">
-          <span class="card-index">0{{ index + 1 }}</span>
-          <h3>{{ solution.title }}</h3>
-          <p>{{ solution.description }}</p>
-          <strong>{{ solution.outcome }}</strong>
-        </article>
-      </div>
-    </section>
-
-    <section class="section split-section">
-      <div>
-        <p class="eyebrow">A guided rollout</p>
-        <h2>Good change starts with the reality of your work.</h2>
+    </div>
+    <section class="section container">
+      <div class="section-heading heading-split">
+        <div>
+          <p class="eyebrow">ONE SYSTEM. EVERYDAY SIMPLICITY.</p>
+          <h2>
+            A proper home for
+            <br />
+            your health & safety.
+          </h2>
+        </div>
         <p>
-          The public site makes the next step feel human: understand the fit, see the approach, and
-          talk through what a sensible start looks like.
+          From training records to meeting minutes, keep the details together and make day-to-day
+          safety management easier.
         </p>
       </div>
-      <ol class="steps-list">
-        <li v-for="(step, index) in implementationSteps" :key="step">
-          <span>0{{ index + 1 }}</span>
-          <p>{{ step }}</p>
-        </li>
-      </ol>
-    </section>
-
-    <section class="section cta-section">
-      <div>
-        <p class="eyebrow">Ready when you are</p>
-        <h2>Start with a conversation about your team.</h2>
+      <div class="feature-grid">
+        <NuxtLink
+          v-for="feature in features"
+          :key="feature.title"
+          to="/features"
+          class="feature-card"
+        >
+          <span class="feature-icon"><SiteIcon :name="feature.icon" /></span>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+          <span class="card-link">
+            Explore feature
+            <SiteIcon name="arrow" />
+          </span>
+        </NuxtLink>
       </div>
-      <NuxtLink class="button button--primary" to="/contact">Contact Stay Safe</NuxtLink>
     </section>
+    <section class="process-section">
+      <div class="container process-grid">
+        <div>
+          <p class="eyebrow">BRING STRUCTURE TO YOUR WORKDAY</p>
+          <h2>
+            Good processes.
+            <br />
+            Without the paper trail.
+          </h2>
+          <p>
+            Health and safety is part of every business. Auditz helps you make it a clear,
+            consistent part of yours.
+          </p>
+          <NuxtLink class="text-link" to="/features">
+            See what you can manage
+            <SiteIcon name="arrow" />
+          </NuxtLink>
+        </div>
+        <ol class="process-list">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Bring your records together</h3>
+              <p>Give your training, equipment and documents one organised home.</p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Make your processes repeatable</h3>
+              <p>Formalise how your team manages everyday health and safety.</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Prepare with more clarity</h3>
+              <p>Support your preparation for ISO 45001 with structured processes and records.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <section class="section container industry-section">
+      <p class="eyebrow">YOUR INDUSTRY. YOUR TEAM. YOUR AUDITZ.</p>
+      <h2>
+        Different workplaces.
+        <br />
+        The same need for simplicity.
+      </h2>
+      <p>
+        Whether you’re a small team or a larger organisation, bring a more practical approach to
+        managing health and safety.
+      </p>
+      <div class="industry-tags">
+        <span>Construction</span>
+        <span>Manufacturing</span>
+        <span>Agriculture</span>
+        <span>Transport</span>
+        <span>Professional services</span>
+        <span>And your industry</span>
+      </div>
+      <NuxtLink to="/pricing" class="text-link">
+        Find a plan for your business
+        <SiteIcon name="arrow" />
+      </NuxtLink>
+    </section>
+    <DemoCta />
   </div>
 </template>

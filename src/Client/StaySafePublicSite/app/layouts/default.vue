@@ -1,41 +1,95 @@
 <script setup lang="ts">
+const menuOpen = ref(false)
+const route = useRoute()
+watch(
+  () => route.path,
+  () => {
+    menuOpen.value = false
+  },
+)
 const navigation = [
-  { label: 'Solutions', to: '/solutions' },
-  { label: 'Why Stay Safe', to: '/about' },
+  { label: 'Home', to: '/' },
+  { label: 'Features', to: '/features' },
+  { label: 'Pricing', to: '/pricing' },
   { label: 'Contact', to: '/contact' },
 ]
+useHead({ htmlAttrs: { lang: 'en-NZ' } })
 </script>
-
 <template>
   <div class="site-shell">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
-      <NuxtLink class="brand" to="/" aria-label="Stay Safe home">
-        <span class="brand-mark" aria-hidden="true">S</span>
-        <span>Stay Safe</span>
-      </NuxtLink>
-
-      <nav class="site-nav" aria-label="Primary navigation">
-        <NuxtLink v-for="item in navigation" :key="item.to" :to="item.to">
-          {{ item.label }}
-        </NuxtLink>
-      </nav>
-
-      <NuxtLink class="button button--small button--primary" to="/contact">Talk to us</NuxtLink>
+      <div class="container header-inner">
+        <NuxtLink to="/" aria-label="Stay Safe Auditz Software home"><BrandLogo /></NuxtLink>
+        <button
+          class="menu-toggle"
+          :aria-expanded="menuOpen"
+          aria-controls="primary-navigation"
+          @click="menuOpen = !menuOpen"
+        >
+          {{ menuOpen ? 'Close' : 'Menu' }}
+          <span aria-hidden="true">{{ menuOpen ? '×' : '☰' }}</span>
+        </button>
+        <nav
+          id="primary-navigation"
+          class="site-nav"
+          :class="{ 'is-open': menuOpen }"
+          aria-label="Primary navigation"
+        >
+          <NuxtLink v-for="item in navigation" :key="item.to" :to="item.to">
+            {{ item.label }}
+          </NuxtLink>
+          <a class="mobile-login" href="https://app.auditz.io/">Log in ↗</a>
+        </nav>
+        <div class="header-actions">
+          <a class="login-link" href="https://app.auditz.io/">
+            Log in
+            <span aria-hidden="true">↗</span>
+          </a>
+          <NuxtLink class="button button--primary button--small" to="/contact">
+            Book a demo
+            <SiteIcon name="arrow" />
+          </NuxtLink>
+        </div>
+      </div>
     </header>
-
-    <main>
-      <slot />
-    </main>
-
+    <main id="main-content" tabindex="-1"><slot /></main>
     <footer class="site-footer">
-      <NuxtLink class="brand" to="/" aria-label="Stay Safe home">
-        <span class="brand-mark" aria-hidden="true">S</span>
-        <span>Stay Safe</span>
-      </NuxtLink>
-      <p>Practical safety systems for teams that want to work with confidence.</p>
-      <div class="footer-links">
-        <NuxtLink to="/privacy">Privacy</NuxtLink>
-        <NuxtLink to="/contact">Contact</NuxtLink>
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <NuxtLink to="/" aria-label="Stay Safe Auditz Software home"><BrandLogo /></NuxtLink>
+            <p>
+              Health and safety management,
+              <br />
+              without the paperwork.
+            </p>
+          </div>
+          <div>
+            <h2>Explore</h2>
+            <NuxtLink to="/features">Features</NuxtLink>
+            <NuxtLink to="/pricing">Pricing</NuxtLink>
+            <NuxtLink to="/about">About Auditz</NuxtLink>
+          </div>
+          <div>
+            <h2>Let’s talk</h2>
+            <a href="mailto:staysafe@auditz.co.nz">staysafe@auditz.co.nz</a>
+            <NuxtLink to="/contact">Book a demo</NuxtLink>
+            <p>New Zealand & Australia</p>
+          </div>
+          <div>
+            <h2>Already with us?</h2>
+            <a href="https://app.auditz.io/">Log in to Auditz ↗</a>
+            <a href="https://www.auditz.io/help-centre.html">Help centre ↗</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© {{ new Date().getFullYear() }} Stay Safe Auditz Software Ltd</span>
+          <div>
+            <a href="https://www.auditz.io/privacy-policy.html">Privacy policy</a>
+            <a href="https://www.auditz.io/terms-of-use.html">Terms of use</a>
+          </div>
+        </div>
       </div>
     </footer>
   </div>
