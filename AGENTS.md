@@ -13,6 +13,17 @@ This repository contains the public Stay Safe website. It is intentionally small
 3. Make the smallest coherent change. Do not mix visual redesigns with infrastructure or content changes unless explicitly asked.
 4. Preserve unrelated work in the working tree. Do not reset, overwrite, or reformat files outside the task.
 
+## Branch and push workflow
+
+- Work directly on the repository's default branch, currently `main` (the branch referred to as master). Do not create feature branches or worktrees unless the user explicitly requests them. Do not rename `main` to `master`.
+- Check whether the requested work is complete and ready to push at the start of a work session, after each meaningful completed change, and before the final handoff. These are checks during active work, not a background schedule.
+- Review `git status`, the diff, and local commits not yet on `origin/main`. Confirm the agreed scope is complete, no temporary assets or generated output are included, and the applicable quality gates below pass for the current changes. For visual changes, inspect the affected pages in the browser.
+- Reuse valid check results when relevant code has not changed; do not rerun the full application suite for documentation-only changes. Run `git diff --check` for documentation changes.
+- Before declaring work ready to push, fetch `origin` when network access is available and check whether `main` is ahead, behind, or diverged from `origin/main`. Preserve local work; never force-push, discard changes, or overwrite remote work. If the remote cannot be checked, explicitly state that readiness is based on the last fetched state.
+- Save complete, verified work in a descriptive local commit on `main`. Keep unrelated or unfinished work out of the commit.
+- At handoff, report whether the work is ready to push, which commits are pending, and any remaining checks or blockers. Distinguish implementation readiness from GitHub authentication, repository write permission, and actual publication.
+- Push to `origin main` only when the user has authorized a push. A request to check readiness is not authorization to publish. Do not repeatedly retry a denied push while waiting for repository permissions.
+
 ## Nuxt application conventions
 
 - Use Nuxt 4, Vue 3, TypeScript, and the `app/` directory. Keep page routes in `app/pages/`, reusable presentational pieces in `app/components/`, and shared static copy/data in `app/data/`.
