@@ -1,0 +1,8 @@
+apiVersion: v2
+name: staysafe-public-site
+description: Static Nuxt public website for Stay Safe
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+  - name: Stay Safe Team

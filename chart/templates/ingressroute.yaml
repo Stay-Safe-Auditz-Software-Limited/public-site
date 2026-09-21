@@ -1,0 +1,29 @@
+{{- $serviceName := include "staysafePublicSite.fullname" . }}
+{{- $servicePort := .Values.app.service.port }}
+{{- $tlsMiddleware := printf "%s-https" $serviceName }}
+{{- $securityMiddleware := printf "%s-security-headers" $serviceName }}
+{{- $hosts := concat (list .Values.ingress.host) .Values.ingress.additionalHosts }}
+{{- range $host := $hosts }}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ printf "%s-%s" $serviceName ($host | replace "." "-") | trunc 63 | trimSuffix "-" }}
+  labels:
+    {{- include "staysafePublicSite.labels" $ | nindent 4 }}
+spec:
+  entryPoints:
+    - web
+    - websecure
+  tls:
+    certResolver: {{ $.Values.traefik.certResolver }}
+  routes:
+    - kind: Rule
+      match: Host(`{{ required "ingress.host must be set" $host }}`)
+      middlewares:
+        - name: {{ $tlsMiddleware }}
+        - name: {{ $securityMiddleware }}
+      services:
+        - name: {{ $serviceName }}
+          port: {{ $servicePort }}
+{{- end }}

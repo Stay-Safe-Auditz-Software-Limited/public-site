@@ -1,0 +1,36 @@
+environment: production
+
+ingress:
+  # Set by the deployment environment. This placeholder must not be deployed.
+  host: public-site.example.com
+  additionalHosts: []
+
+traefik:
+  certResolver: le
+
+app:
+  replicaCount: 2
+  image:
+    repository: ghcr.io/philosoftware/staysafe/public-site
+    # A safe placeholder so Helm can lint. Production must override this with an immutable release tag.
+    tag: "0.0.0-placeholder"
+    pullPolicy: IfNotPresent
+  containerPort: 8080
+  service:
+    port: 80
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  health:
+    path: /healthz
+    initialDelaySeconds: 5
+    periodSeconds: 15
+    timeoutSeconds: 3
+    failureThreshold: 3
+  nodeSelector:
+    kubernetes.io/os: linux
+  tolerations: []

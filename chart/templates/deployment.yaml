@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "staysafePublicSite.fullname" . }}
+  labels:
+    {{- include "staysafePublicSite.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.app.replicaCount }}
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "staysafePublicSite.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        {{- include "staysafePublicSite.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: public-site
+          image: {{ .Values.app.image.repository }}:{{ required "app.image.tag must be set to an immutable release tag" .Values.app.image.tag }}
+          imagePullPolicy: {{ .Values.app.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.app.containerPort }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.app.health.path }}
+              port: http
+            initialDelaySeconds: {{ .Values.app.health.initialDelaySeconds }}
+            periodSeconds: {{ .Values.app.health.periodSeconds }}
+            timeoutSeconds: {{ .Values.app.health.timeoutSeconds }}
+            failureThreshold: {{ .Values.app.health.failureThreshold }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.app.health.path }}
+              port: http
+            initialDelaySeconds: {{ .Values.app.health.initialDelaySeconds }}
+            periodSeconds: {{ .Values.app.health.periodSeconds }}
+            timeoutSeconds: {{ .Values.app.health.timeoutSeconds }}
+            failureThreshold: {{ .Values.app.health.failureThreshold }}
+          resources:
+            {{- toYaml .Values.app.resources | nindent 12 }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
+        fsGroup: 101
+      nodeSelector:
+        {{- toYaml .Values.app.nodeSelector | nindent 8 }}
+      tolerations:
+        {{- toYaml .Values.app.tolerations | nindent 8 }}
