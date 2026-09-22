@@ -592,6 +592,28 @@ h1 > span {
 .footer-top .brand-logo {
   margin-bottom: 12px;
 }
+.footer-social {
+  display: flex;
+  gap: 4px;
+  margin-left: -10px;
+}
+.footer-top .footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: white;
+  border-radius: 4px;
+}
+.footer-social a:hover {
+  background: #272c26;
+}
+.footer-social svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
 .footer-bottom {
   border-top: 1px solid #272c26;
   display: flex;

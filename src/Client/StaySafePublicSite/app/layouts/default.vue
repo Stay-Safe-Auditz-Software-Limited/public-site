@@ -64,6 +64,32 @@ useHead({ htmlAttrs: { lang: 'en-NZ' } })
               <br />
               without the paperwork.
             </p>
+            <nav class="footer-social" aria-label="Social media">
+              <a
+                href="https://www.facebook.com/p/Stay-Safe-Auditz-Software-Ltd-100083368899253/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook (opens in a new tab)"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    d="M14 21v-8h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.4A25 25 0 0 0 15 1c-3 0-5 1.8-5 5v3H7v4h3v8z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/stay-safe-auditz-software-ltd/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn (opens in a new tab)"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    d="M5.2 3a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.3 9h3.8v12H3.3V9Zm6.2 0h3.6v1.6h.1A4 4 0 0 1 16.8 8c3.9 0 4.6 2.5 4.6 5.7V21h-3.8v-6.5c0-1.6 0-3.5-2.2-3.5s-2.5 1.7-2.5 3.4V21H9.5V9Z"
+                  />
+                </svg>
+              </a>
+            </nav>
           </div>
           <div>
             <h2>Explore</h2>
