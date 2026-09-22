@@ -141,18 +141,13 @@ img {
 .brand-logo {
   display: block;
   width: 180px;
-  height: 55px;
-  position: relative;
-  overflow: hidden;
+  height: auto;
   flex-shrink: 0;
 }
 .brand-logo img {
-  position: absolute;
-  max-width: none;
-  width: 242px;
+  display: block;
+  width: 100%;
   height: auto;
-  left: -28px;
-  top: -55px;
 }
 .site-nav {
   display: flex;
@@ -885,11 +880,6 @@ h1 > span {
   }
   .brand-logo {
     width: 160px;
-  }
-  .brand-logo img {
-    width: 220px;
-    left: -27px;
-    top: -48px;
   }
   .menu-toggle {
     display: flex;
