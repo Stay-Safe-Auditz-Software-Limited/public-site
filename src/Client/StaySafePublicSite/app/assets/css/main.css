@@ -662,7 +662,8 @@ h1 > span {
 .pricing-intro {
   text-align: center;
 }
-.pricing-intro > p {
+.pricing-intro > p,
+.pricing-intro > h1 {
   margin-inline: auto;
 }
 .billing-toggle {
