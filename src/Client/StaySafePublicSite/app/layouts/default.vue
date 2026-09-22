@@ -80,7 +80,7 @@ useHead({ htmlAttrs: { lang: 'en-NZ' } })
           <div>
             <h2>Already with us?</h2>
             <a href="https://app.auditz.io/">Log in to Auditz ↗</a>
-            <a href="https://www.auditz.io/help-centre.html">Help centre ↗</a>
+            <NuxtLink to="/help-centre.html">Help centre</NuxtLink>
           </div>
         </div>
         <div class="footer-bottom">
