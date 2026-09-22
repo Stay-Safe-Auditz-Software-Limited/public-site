@@ -1192,6 +1192,38 @@ h1 > span {
 }
 
 /* Help centre retains the original public .html routes. */
+.privacy-hero {
+  padding-bottom: 32px;
+}
+.privacy-policy {
+  max-width: 900px;
+  padding-bottom: 80px;
+  overflow-wrap: anywhere;
+}
+.privacy-policy h2 {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: clamp(19px, 3vw, 25px);
+  color: var(--green-dark);
+}
+.privacy-policy h3 {
+  margin-top: 24px;
+  font-size: 18px;
+}
+.privacy-policy p,
+.privacy-policy li {
+  font-size: 14px;
+  line-height: 1.9;
+}
+.privacy-policy li {
+  margin-bottom: 10px;
+}
+.privacy-policy a {
+  color: var(--green-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .help-intro {
   padding-bottom: 48px;
 }

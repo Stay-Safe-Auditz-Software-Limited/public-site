@@ -112,8 +112,8 @@ useHead({ htmlAttrs: { lang: 'en-NZ' } })
         <div class="footer-bottom">
           <span>© {{ new Date().getFullYear() }} Stay Safe Auditz Software Ltd</span>
           <div>
-            <a href="https://www.auditz.io/privacy-policy.html">Privacy policy</a>
-            <a href="https://www.auditz.io/terms-of-use.html">Terms of use</a>
+            <NuxtLink to="/privacy-policy.html">Privacy policy</NuxtLink>
+            <NuxtLink to="/terms-of-use.html">Terms of use</NuxtLink>
           </div>
         </div>
       </div>
