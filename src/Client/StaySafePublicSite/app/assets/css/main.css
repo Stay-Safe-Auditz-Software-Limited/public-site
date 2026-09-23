@@ -701,6 +701,29 @@ h1 > span {
   font-size: 12px;
   color: #899484;
 }
+.features-page-grid .feature-detail {
+  background: #080b08;
+  color: white;
+  border-color: #344032;
+}
+.features-page-grid .feature-detail p {
+  color: #c3cbc1;
+}
+.features-page-grid .feature-icon {
+  background: #243321;
+  color: #80cf70;
+}
+.features-page-grid .detail-number {
+  color: #80cf70;
+}
+.features-more {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--green-dark);
+  font-size: 28px;
+  font-weight: 600;
+  margin: 12px 0 0;
+}
 .feature-detail h2 {
   font-size: 24px;
 }

@@ -20,13 +20,14 @@ useSeoMeta({
         and safety processes.
       </p>
     </section>
-    <section class="container feature-detail-grid section-bottom">
+    <section class="container feature-detail-grid section-bottom features-page-grid">
       <article v-for="(feature, index) in features" :key="feature.title" class="feature-detail">
         <span class="feature-icon"><SiteIcon :name="feature.icon" /></span>
         <span class="detail-number">0{{ index + 1 }}</span>
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.detail }}</p>
       </article>
+      <p class="features-more">and more!</p>
     </section>
     <DemoCta />
   </div>
