@@ -95,8 +95,8 @@ useSeoMeta({
             class="home-features-graphic"
             src="/images/auditz-mobile-tablet.png"
             alt="Auditz on phone and tablet, showing training, insurance, maintenance, equipment, contractor documents and workplace inspection records."
-            width="1246"
-            height="1112"
+            width="1327"
+            height="1185"
             loading="lazy"
           />
         </div>
