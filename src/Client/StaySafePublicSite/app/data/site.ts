@@ -8,31 +8,35 @@ export const demoEmail = 'mailto:staysafe@auditz.co.nz?subject=Auditz%20demo%20r
 export const features: Feature[] = [
   {
     title: 'Training registers',
-    description: 'Keep your team’s training records organised and easy to find.',
+    description:
+      'Keep your team’s training records organised and easy to find, including first aid certificates and completed training.',
     icon: 'people',
     detail:
-      'Bring employee training records into one register, so you can review completed training and plan what comes next.',
+      'Bring employee training records, including first aid certificates and other completed training, into one register, so you can review completed training and plan what comes next.',
   },
   {
     title: 'Equipment & maintenance',
-    description: 'Bring equipment details and maintenance records together.',
+    description:
+      'Bring equipment details and maintenance records together, so you know when vehicle WOFs, registrations (REGO) and equipment inspections are due.',
     icon: 'tool',
     detail:
-      'Keep a clear record of your equipment and its maintenance, with information available when you need it.',
+      'Keep a clear record of your equipment and its maintenance, with information available when you need it. Know when your vehicles are due for a WOF or registration (REGO), or when equipment needs an inspection.',
   },
   {
     title: 'Document control',
-    description: 'Give your health and safety documents a proper home.',
+    description:
+      'Give your health and safety documents a proper home, from insurance and company records to policies and procedures.',
     icon: 'document',
     detail:
-      'Organise the policies, procedures and records that support your health and safety processes.',
+      'Organise the policies, procedures and records that support your health and safety processes, including insurance documents, company records, and health and safety policies and procedures.',
   },
   {
     title: 'Meetings & minutes',
-    description: 'Keep discussions and meeting records out of the paper pile.',
+    description:
+      'Keep discussions and meeting records out of the paper pile. Upload existing minutes or take them in Auditz.',
     icon: 'chat',
     detail:
-      'Keep health and safety meeting minutes together so your team can refer back to decisions and discussions.',
+      'Upload existing minutes or take meeting minutes in Auditz. Keep health and safety meeting minutes together so your team can refer back to decisions and discussions.',
   },
   {
     title: 'Consistent processes',
