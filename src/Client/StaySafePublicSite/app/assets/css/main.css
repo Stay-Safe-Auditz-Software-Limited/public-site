@@ -456,6 +456,55 @@ h1 > span {
   width: 15px;
   height: 15px;
 }
+.home-features {
+  background: #080b08;
+  color: white;
+}
+.home-features-intro {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.home-features-intro p:not(.eyebrow) {
+  max-width: 430px;
+}
+.home-features-graphic {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.home-features p {
+  color: #c3cbc1;
+}
+.home-features .eyebrow,
+.home-features .card-link {
+  color: #80cf70;
+}
+.home-features .feature-card {
+  background: #141a14;
+  border-color: #344032;
+}
+.home-features .feature-card:hover {
+  background: #1e2a1c;
+  border-color: #53b848;
+}
+.home-features .feature-icon {
+  background: #243321;
+  color: #80cf70;
+}
+@media (max-width: 800px) {
+  .home-features-intro {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .home-features-graphic {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+}
 .process-section {
   background: #f7f8f6;
   padding-block: 85px;

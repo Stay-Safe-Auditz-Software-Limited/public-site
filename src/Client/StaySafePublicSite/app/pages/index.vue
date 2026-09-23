@@ -76,36 +76,46 @@ useSeoMeta({
         </span>
       </div>
     </div>
-    <section class="section container">
-      <div class="section-heading heading-split">
-        <div>
-          <p class="eyebrow">ONE SYSTEM. EVERYDAY SIMPLICITY.</p>
-          <h2>
-            A proper home for
-            <br />
-            your health & safety.
-          </h2>
+    <section class="home-features">
+      <div class="section container">
+        <div class="section-heading home-features-intro">
+          <div>
+            <p class="eyebrow">ONE SYSTEM. EVERYDAY SIMPLICITY.</p>
+            <h2>
+              A proper home for
+              <br />
+              your health & safety.
+            </h2>
+            <p>
+              From training records to meeting minutes, keep the details together and make
+              day-to-day safety management easier.
+            </p>
+          </div>
+          <img
+            class="home-features-graphic"
+            src="/images/auditz-mobile-tablet.png"
+            alt="Auditz on phone and tablet, showing training, insurance, maintenance, equipment, contractor documents and workplace inspection records."
+            width="1246"
+            height="1112"
+            loading="lazy"
+          />
         </div>
-        <p>
-          From training records to meeting minutes, keep the details together and make day-to-day
-          safety management easier.
-        </p>
-      </div>
-      <div class="feature-grid">
-        <NuxtLink
-          v-for="feature in features"
-          :key="feature.title"
-          to="/features"
-          class="feature-card"
-        >
-          <span class="feature-icon"><SiteIcon :name="feature.icon" /></span>
-          <h3>{{ feature.title }}</h3>
-          <p>{{ feature.description }}</p>
-          <span class="card-link">
-            Explore feature
-            <SiteIcon name="arrow" />
-          </span>
-        </NuxtLink>
+        <div class="feature-grid">
+          <NuxtLink
+            v-for="feature in features"
+            :key="feature.title"
+            to="/features"
+            class="feature-card"
+          >
+            <span class="feature-icon"><SiteIcon :name="feature.icon" /></span>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+            <span class="card-link">
+              Explore feature
+              <SiteIcon name="arrow" />
+            </span>
+          </NuxtLink>
+        </div>
       </div>
     </section>
     <section class="process-section">
