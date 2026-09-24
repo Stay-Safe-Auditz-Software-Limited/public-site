@@ -37,6 +37,8 @@
   padding-block: 70px;
 }
 .cta-phone-wrap {
+  width: 245px;
+  justify-self: center;
   padding: 15px 24px;
 }
 .cta-phone {
@@ -82,7 +84,7 @@
     padding-block: 50px;
   }
   .cta-phone-wrap {
-    width: 240px;
+    width: 215px;
     justify-self: center;
   }
 }
