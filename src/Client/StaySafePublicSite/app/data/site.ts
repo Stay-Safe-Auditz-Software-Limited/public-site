@@ -39,11 +39,12 @@ export const features: Feature[] = [
       'Upload existing minutes or take meeting minutes in Auditz. Keep health and safety meeting minutes together so your team can refer back to decisions and discussions.',
   },
   {
-    title: 'Consistent processes',
-    description: 'Formalise the way your business manages health and safety.',
-    icon: 'check',
+    title: 'Occurrence reporting',
+    description:
+      'Make reporting easier for your team. Report incidents, near misses and injuries from a mobile, then complete the investigation on the web.',
+    icon: 'bell',
     detail:
-      'Move from scattered paperwork to a more organised approach that your team can use day to day.',
+      'Take the paperwork out of occurrence reporting. Your team can report incidents, near misses, injuries and more from their mobile while the details are fresh. Complete the investigation on the web, keeping reports and investigations together so you spend less time chasing information and more time understanding what happened.',
   },
   {
     title: 'ISO 45001 preparation',

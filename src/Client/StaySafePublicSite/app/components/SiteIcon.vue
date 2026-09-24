@@ -9,6 +9,7 @@ const paths: Record<string, string> = {
   check: 'M9 11l3 3L22 4 M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11',
   shield: 'M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11 M8 12l3 3 5-6',
   arrow: 'M5 12h14 M13 6l6 6-6 6',
+  bell: 'M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9 M10 21a2 2 0 0 0 4 0 M3 5l-1 3 M21 5l1 3',
 }
 </script>
 <template>
