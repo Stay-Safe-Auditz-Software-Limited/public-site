@@ -185,6 +185,7 @@ useSeoMeta({
         <SiteIcon name="arrow" />
       </NuxtLink>
     </section>
+    <HomeFaq />
     <DemoCta />
   </div>
 </template>
