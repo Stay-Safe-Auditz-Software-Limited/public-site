@@ -1,4 +1,4 @@
-FROM node:22.16.0-alpine AS build
+FROM node:22.23.3-alpine AS build
 
 WORKDIR /app
 
@@ -6,7 +6,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
-RUN npm run build
+RUN npm run prepare && npm run build
 
 FROM nginxinc/nginx-unprivileged:1.27-alpine
 

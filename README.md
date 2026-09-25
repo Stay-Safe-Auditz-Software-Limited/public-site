@@ -35,9 +35,17 @@ helm template staysafe-public-site chart --set app.image.tag=local
 
 `npm run build` generates static output which the included Dockerfile serves via NGINX. The Helm chart deploys that image as a Linux workload and exposes it through Traefik. Set the production hostname and an immutable image tag through values supplied by the deployment pipeline; do not store them in source.
 
+### Container publishing
+
+On pushes to `main`, the Quality workflow builds and pushes the Linux container after both the Nuxt and Helm quality jobs succeed. Pull requests run the quality checks without publishing.
+
+The image repository comes from `app.image.repository` in `chart/values.yaml`, and the tag is the full Git commit SHA. The published image and the corresponding `app.image.tag` value appear in the workflow run summary. Publishing does not update the deployment automatically.
+
+The publish job authenticates to GHCR with the built-in `GITHUB_TOKEN` and job-scoped `packages: write` permission. If the GHCR package already exists, grant this repository write access under the package's **Manage Actions access** settings. These push credentials are separate from the External Secrets credentials used by Kubernetes to pull the image.
+
 ### Private image registry access
 
-The chart follows the main StaySafe application's External Secrets setup. It creates a namespace-local `SecretStore` named `<release>-gcp-secret-store` and an `ExternalSecret` named `<release>-registry`. External Secrets reads `GITHUB_CONTAINER_REGISTRY_CONFIG` from GCP Secret Manager in project `staysafe-503721` and creates a Kubernetes Secret of type `kubernetes.io/dockerconfigjson`. The Deployment references that Secret through `imagePullSecrets`. The secret is used by Kubernetes to pull the image; it is not mounted into the static site.
+The chart follows the main StaySafe application's External Secrets setup. It creates a namespace-local `SecretStore` named `<release>-gcp-secret-store` and an `ExternalSecret` named `<release>-registry`. External Secrets reads `GITHUB_CONTAINER_REGISTRY_CONFIG` from the GCP Secret Manager project configured by `gcpSecrets.projectId` and creates a Kubernetes Secret of type `kubernetes.io/dockerconfigjson`. The Deployment references that Secret through `imagePullSecrets`. The secret is used by Kubernetes to pull the image; it is not mounted into the static site.
 
 Before deploying:
 
