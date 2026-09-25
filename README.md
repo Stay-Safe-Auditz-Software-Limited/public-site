@@ -37,11 +37,15 @@ helm template staysafe-public-site chart --set app.image.tag=local
 
 ### Container publishing
 
-On pushes to `main`, the Quality workflow builds and pushes the Linux container after both the Nuxt and Helm quality jobs succeed. Pull requests run the quality checks without publishing.
+On Git tag pushes, the Quality workflow builds and pushes the Linux container after both the Nuxt and Helm quality jobs succeed. Pushes to `main` and pull requests run the quality checks without publishing.
 
-The image repository comes from `app.image.repository` in `chart/values.yaml`, and the tag is the full Git commit SHA. The published image and the corresponding `app.image.tag` value appear in the workflow run summary. Publishing does not update the deployment automatically.
+The image repository comes from `app.image.repository` in `chart/values.yaml`, and the image version is the Git tag exactly as pushed (for example, `v1.2.3` produces `:v1.2.3`). Tags must be valid Docker image tags and cannot be `latest`.
+
+After a successful image push, a separate job checks out the latest `main`, updates only `app.image.tag` in `chart/values.yaml`, and commits and pushes the change as `github-actions[bot]`. The release tag remains on the original release commit. Re-running the same release skips the chart commit if the value is already correct. If publishing fails, the chart is not updated. The workflow does not directly deploy to Kubernetes; any deployment automation watching `main` can pick up the updated chart.
 
 The publish job authenticates to GHCR with the built-in `GITHUB_TOKEN` and job-scoped `packages: write` permission. If the GHCR package already exists, grant this repository write access under the package's **Manage Actions access** settings. These push credentials are separate from the External Secrets credentials used by Kubernetes to pull the image.
+
+The chart-update job uses job-scoped `contents: write` permission. Repository rules must allow its bot push to `main`; a rejected push fails the job without force-pushing or bypassing branch protection. Pushes made with `GITHUB_TOKEN` do not trigger another push workflow run.
 
 ### Private image registry access
 

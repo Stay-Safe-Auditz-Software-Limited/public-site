@@ -25,7 +25,7 @@ app:
   replicaCount: 2
   image:
     repository: ghcr.io/stay-safe-auditz-software-limited/public-site
-    # A safe placeholder so Helm can lint. Production must override this with an immutable release tag.
+    # Updated on main by the release workflow after a tagged image is published.
     tag: "0.0.0"
     pullPolicy: IfNotPresent
   containerPort: 8080
