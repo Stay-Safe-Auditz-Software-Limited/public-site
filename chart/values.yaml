@@ -1,7 +1,7 @@
 environment: production
 
 gcpSecrets:
-  projectId: staysafe-503721
+  projectId: staysafe-auditz
   auth:
     secretRef:
       name: gcpsm-secret
