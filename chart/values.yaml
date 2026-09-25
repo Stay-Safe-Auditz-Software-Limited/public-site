@@ -1,5 +1,18 @@
 environment: production
 
+gcpSecrets:
+  projectId: staysafe-503721
+  auth:
+    secretRef:
+      name: gcpsm-secret
+      key: secret-access-credentials
+
+externalSecrets:
+  refreshInterval: 1h
+  imagePull:
+    remoteKey: GITHUB_CONTAINER_REGISTRY_CONFIG
+    version: latest
+
 ingress:
   # Set by the deployment environment. This placeholder must not be deployed.
   host: public-site.example.com

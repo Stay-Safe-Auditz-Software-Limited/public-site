@@ -18,3 +18,11 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/part-of: staysafe
 environment: {{ .Values.environment | quote }}
 {{- end }}
+
+{{- define "staysafePublicSite.imagePullName" -}}
+{{- printf "%s-registry" .Release.Name -}}
+{{- end }}
+
+{{- define "staysafePublicSite.secretStoreName" -}}
+{{- printf "%s-gcp-secret-store" .Release.Name -}}
+{{- end }}

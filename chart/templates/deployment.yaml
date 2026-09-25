@@ -21,6 +21,8 @@ spec:
       labels:
         {{- include "staysafePublicSite.labels" . | nindent 8 }}
     spec:
+      imagePullSecrets:
+        - name: {{ include "staysafePublicSite.imagePullName" . }}
       containers:
         - name: public-site
           image: {{ .Values.app.image.repository }}:{{ required "app.image.tag must be set to an immutable release tag" .Values.app.image.tag }}
