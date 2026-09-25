@@ -35,6 +35,14 @@ helm template staysafe-public-site chart --set app.image.tag=local
 
 `npm run build` generates static output which the included Dockerfile serves via NGINX. The Helm chart deploys that image as a Linux workload and exposes it through Traefik. Set the production hostname and an immutable image tag through values supplied by the deployment pipeline; do not store them in source.
 
+The container runs as user/group 101 with a read-only root filesystem. A per-pod `emptyDir` mounted at `/tmp` provides writable storage for NGINX's PID and temporary files. Its size limit is controlled by `app.tmp.sizeLimit` (default `64Mi`).
+
+### Ingress hostnames
+
+Set `ingress.host` and each `ingress.additionalHosts` entry to a bare lowercase DNS hostname, such as `newweb.auditz.io`. Do not include `https://`, a port, a path, a trailing slash, or Markdown link formatting. These values are used in both Kubernetes resource names and Traefik `Host(...)` rules; HTTPS is configured separately by the chart.
+
+For example, an Argo CD Helm parameter should use `ingress.host = newweb.auditz.io`. Correct the deployment's Helm parameter or values override if it contains a URL; changing the chart default does not replace an override. Helm rejects invalid hostnames before rendering the IngressRoute.
+
 ### Container publishing
 
 On Git tag pushes, the Quality workflow builds and pushes the Linux container after both the Nuxt and Helm quality jobs succeed. Pushes to `main` and pull requests run the quality checks without publishing.

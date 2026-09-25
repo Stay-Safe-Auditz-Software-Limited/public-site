@@ -12,18 +12,22 @@ externalSecrets:
     version: latest
 ingress:
   # Set by the deployment environment. This placeholder must not be deployed.
+  # Use a bare lowercase hostname without https://, a port, or a path.
   host: public-site.example.com
+  # Additional bare lowercase hostnames, using the same format as host.
   additionalHosts: []
 traefik:
   certResolver: le
 app:
-  replicaCount: 2
+  replicaCount: 1
   image:
     repository: ghcr.io/stay-safe-auditz-software-limited/public-site
     # Updated on main by the release workflow after a tagged image is published.
     tag: "0.0.3"
     pullPolicy: IfNotPresent
   containerPort: 8080
+  tmp:
+    sizeLimit: 64Mi
   service:
     port: 80
   resources:

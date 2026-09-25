@@ -48,6 +48,9 @@ spec:
             failureThreshold: {{ .Values.app.health.failureThreshold }}
           resources:
             {{- toYaml .Values.app.resources | nindent 12 }}
+          volumeMounts:
+            - name: nginx-tmp
+              mountPath: /tmp
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
@@ -59,6 +62,10 @@ spec:
         runAsUser: 101
         runAsGroup: 101
         fsGroup: 101
+      volumes:
+        - name: nginx-tmp
+          emptyDir:
+            sizeLimit: {{ .Values.app.tmp.sizeLimit }}
       nodeSelector:
         {{- toYaml .Values.app.nodeSelector | nindent 8 }}
       tolerations:

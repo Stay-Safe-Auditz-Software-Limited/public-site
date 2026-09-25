@@ -3,7 +3,14 @@
 {{- $tlsMiddleware := printf "%s-https" $serviceName }}
 {{- $securityMiddleware := printf "%s-security-headers" $serviceName }}
 {{- $hosts := concat (list .Values.ingress.host) .Values.ingress.additionalHosts }}
-{{- range $host := $hosts }}
+{{- range $index, $host := $hosts }}
+{{- $setting := "ingress.host" }}
+{{- if gt $index 0 }}
+{{- $setting = printf "ingress.additionalHosts[%d]" (sub $index 1) }}
+{{- end }}
+{{- if not (and (kindIs "string" $host) (le (len $host) 253) (regexMatch "^[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?)*$" $host)) }}
+{{- fail (printf "%s must be a bare lowercase DNS hostname, for example newweb.auditz.io, without http://, https://, a port, path, or Markdown link" $setting) }}
+{{- end }}
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
