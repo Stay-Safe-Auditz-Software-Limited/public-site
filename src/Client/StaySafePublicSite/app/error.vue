@@ -2,7 +2,7 @@
 const error = useError()
 const statusCode = computed(() => error.value?.statusCode ?? 404)
 
-useSeoMeta({ title: 'Page not found | Stay Safe' })
+useSeoMeta({ title: 'Page not found | Stay Safe', robots: 'noindex, nofollow' })
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { demoEmail } from '~/data/site'
-useSeoMeta({
+usePageSeo({
   title: 'Book a demo | Stay Safe Auditz Software',
   description:
     'Contact Stay Safe Auditz Software to request a demo or ask about health and safety software for your business in New Zealand or Australia.',

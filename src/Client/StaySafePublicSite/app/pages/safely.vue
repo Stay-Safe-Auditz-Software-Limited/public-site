@@ -1,5 +1,5 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageSeo({
   title: 'Safely users | Stay Safe Auditz Software',
   description:
     'You’re still in the right place. Safely is run through Stay Safe Auditz Software. Find your Safely login and learn about the move to Auditz branding.',

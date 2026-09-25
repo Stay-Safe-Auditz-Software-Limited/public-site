@@ -83,6 +83,14 @@ kubectl --namespace $namespace get secretstore,externalsecret
 kubectl --namespace $namespace get secret "<release>-registry"
 ```
 
+## Search engine metadata
+
+Pages use `app/composables/usePageSeo.ts` to keep their existing titles and descriptions consistent with canonical links and social previews. The intended live origin is `https://www.auditz.io`; set `NUXT_PUBLIC_SITE_URL` at build time if the approved live address changes. The generated static output includes `sitemap.xml` and `robots.txt`, including the legacy Help Centre URLs. Update the route list in `server/routes/sitemap.xml.ts` when adding public pages.
+
+For a staging build, set `NUXT_PUBLIC_SITE_INDEXABLE=false` **before building**. This emits noindex metadata and disallows crawling. Local development is also excluded. These settings are built into the static files; changing environment variables on the serving container does not rebuild them. Crawler directives are not access controls, so confidential previews still need hosting-level protection.
+
+Before launch, Philo Software should confirm the production hostname, redirects from old URLs, and indexing settings. After deployment, verify the live canonical links and sitemap, then submit the sitemap in Google Search Console. Search Console verification and production deployment are separate from these source changes.
+
 ## Need help?
 
 See [AGENTS.md](AGENTS.md) before asking an AI agent to make changes. Authentication, visitor data collection, tracking, external integrations, production infrastructure, and unclear security or compliance work must be reviewed with Philo Software first.

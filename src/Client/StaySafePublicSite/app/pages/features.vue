@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { features } from '~/data/site'
-useSeoMeta({
+usePageSeo({
   title: 'Features | Stay Safe Auditz Software',
   description:
     'Explore Auditz training registers, equipment and maintenance records, document control and meeting minutes, with support for ISO 45001 preparation.',

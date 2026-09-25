@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({ path: '/privacy-policy.html', alias: ['/privacy'] })
-useSeoMeta({
+usePageSeo({
   title: 'Privacy Policy | Stay Safe Auditz Software',
   description:
     'Read the Stay Safe Auditz Software privacy policy, including personal information, your rights and cookies.',

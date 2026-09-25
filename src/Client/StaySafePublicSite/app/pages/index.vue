@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { features } from '~/data/site'
-useSeoMeta({
+usePageSeo({
   title: 'Auditz | Health and safety management without the paperwork',
   description:
     'Replace paper-based health and safety processes with Auditz. Organise training, maintenance, documents and meetings for businesses in New Zealand and Australia.',

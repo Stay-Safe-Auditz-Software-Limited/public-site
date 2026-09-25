@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { plans, planUrl } from '~/data/site'
 const annual = ref(false)
-useSeoMeta({
+usePageSeo({
   title: 'Pricing | Stay Safe Auditz Software',
   description:
     'Auditz plans from NZ$110 plus GST per month. Compare plans for up to 5, 50 or 150 staff and get started with your existing Auditz onboarding flow.',

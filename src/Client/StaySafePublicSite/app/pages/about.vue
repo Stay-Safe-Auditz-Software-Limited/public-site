@@ -1,5 +1,5 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageSeo({
   title: 'About Auditz | Stay Safe Auditz Software',
   description:
     'Auditz helps businesses across New Zealand and Australia replace paper-based health and safety systems with organised digital processes.',

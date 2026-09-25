@@ -13,7 +13,7 @@ const articleIndex = computed(() =>
   helpArticles.findIndex((item) => item.slug === route.params.helpArticle),
 )
 const nextArticle = computed(() => helpArticles[articleIndex.value + 1])
-useSeoMeta({
+usePageSeo({
   title: () => `${article.value?.title} | Auditz Help Centre`,
   description: () =>
     article.value?.videoUrl

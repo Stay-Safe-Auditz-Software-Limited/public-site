@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { helpArticles, helpCategories } from '~/data/help'
 definePageMeta({ path: '/help-centre.html' })
-useSeoMeta({
+usePageSeo({
   title: 'Help Centre | Stay Safe Auditz Software',
   description:
     'Auditz software support. Watch step-by-step video guides for getting started, managing folders, records and reporting, or download the mobile app.',

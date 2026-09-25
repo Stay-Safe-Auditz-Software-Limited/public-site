@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({ path: '/terms-of-use.html' })
-useSeoMeta({
+usePageSeo({
   title: 'Terms of Use | Stay Safe Auditz Software',
   description:
     'Read the Auditz Terms of Use for accessing and using the Auditz software and services.',
