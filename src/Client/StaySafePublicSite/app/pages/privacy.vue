@@ -452,18 +452,14 @@ usePageSeo({
           will do so to the extent required by the GDPR
         </li>
         <li>
-          <a style="">
-            <strong style="">
-              rights related to automated decision-making, including profiling
-            </strong>
-            - you have the right to not be subject to a decision based solely on automated
-            processing, including profiling, which produces legal effects concerning you or
-            similarly significantly affects you, except where such automated decision-making is
-            necessary for entering into, or the performance of, a contract with you, is authorised
-            by applicable laws or is based on your explicit consent
-          </a>
-          .&nbsp; We carry out automated decision-making, including profiling, as described above in
-          the general terms section of this privacy policy
+          <strong>rights related to automated decision-making, including profiling</strong>
+          - you have the right to not be subject to a decision based solely on automated processing,
+          including profiling, which produces legal effects concerning you or similarly
+          significantly affects you, except where such automated decision-making is necessary for
+          entering into, or the performance of, a contract with you, is authorised by applicable
+          laws or is based on your explicit consent .&nbsp; We carry out automated decision-making,
+          including profiling, as described above in the general terms section of this privacy
+          policy
         </li>
         <li>
           <strong>right to data portability</strong>
