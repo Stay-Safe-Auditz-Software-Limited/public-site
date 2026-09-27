@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { demoEmail } from '~/data/site'
 usePageSeo({
-  title: 'Book a demo | Stay Safe Auditz Software',
+  title: 'Contact us or request a demo | Stay Safe Auditz Software',
   description:
     'Contact Stay Safe Auditz Software to request a demo or ask about health and safety software for your business in New Zealand or Australia.',
 })
@@ -18,8 +17,8 @@ usePageSeo({
         <span>for your team.</span>
       </h1>
       <p class="hero-lede">
-        Tell us a little about your business and what you’d like to make easier. We’ll help you
-        explore Auditz and find your next step.
+        Have a question or want to see Auditz in action? Send us a message to make an enquiry or
+        request a demo.
       </p>
       <div class="contact-points">
         <p>
@@ -36,20 +35,24 @@ usePageSeo({
         </p>
       </div>
     </div>
-    <aside class="contact-card">
+    <div class="contact-card">
       <span class="feature-icon"><SiteIcon name="chat" /></span>
-      <h2>
-        Your demo starts
-        <br />
-        with a conversation.
-      </h2>
-      <p>
-        Email us to request a demo. It helps to include your business name, team size and a suitable
-        time to talk.
-      </p>
-      <a :href="demoEmail" class="button button--primary">
-        Request a demo by email
-        <SiteIcon name="arrow" />
+      <h2>Let’s talk about your business.</h2>
+      <p>Complete the form below and our team will get back to you.</p>
+      <iframe
+        class="contact-form"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSf3iDNRpydM_xbIEXoEowKM-sdypM_uGvqXbNSvsjyuH_Mz2g/viewform?embedded=true"
+        title="Contact Auditz or request a demo"
+        width="640"
+        height="1316"
+      />
+      <a
+        class="text-link"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSf3iDNRpydM_xbIEXoEowKM-sdypM_uGvqXbNSvsjyuH_Mz2g/viewform"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open form in a new tab
       </a>
       <a class="email-link" href="mailto:staysafe@auditz.co.nz">staysafe@auditz.co.nz</a>
       <hr />
@@ -59,6 +62,37 @@ usePageSeo({
         View pricing
         <SiteIcon name="arrow" />
       </NuxtLink>
-    </aside>
+    </div>
   </section>
 </template>
+
+<style scoped>
+.contact-layout {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: start;
+}
+.contact-card {
+  min-width: 0;
+}
+.contact-form {
+  display: block;
+  width: 100%;
+  height: 1450px;
+  border: 0;
+  margin-block: 24px;
+  background: white;
+}
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 540px) {
+  .contact-card {
+    padding-inline: 12px;
+  }
+  .contact-form {
+    height: 1650px;
+  }
+}
+</style>
