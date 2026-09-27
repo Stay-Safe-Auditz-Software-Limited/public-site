@@ -191,6 +191,7 @@ usePageSeo({
         <SiteIcon name="arrow" />
       </NuxtLink>
     </section>
+    <AppDownloadSection />
     <HomeFaq />
     <DemoCta />
   </div>
