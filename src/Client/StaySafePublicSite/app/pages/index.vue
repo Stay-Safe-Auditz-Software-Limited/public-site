@@ -116,6 +116,12 @@ usePageSeo({
             </span>
           </NuxtLink>
         </div>
+        <div class="features-action">
+          <NuxtLink to="/features" class="button button--primary">
+            Explore all features
+            <SiteIcon name="arrow" />
+          </NuxtLink>
+        </div>
       </div>
     </section>
     <section class="process-section">
@@ -189,3 +195,10 @@ usePageSeo({
     <DemoCta />
   </div>
 </template>
+
+<style scoped>
+.features-action {
+  margin-top: 36px;
+  text-align: center;
+}
+</style>

@@ -23,6 +23,22 @@ export const features: Feature[] = [
       'Keep a clear record of your equipment and its maintenance, with information available when you need it. Know when your vehicles are due for a WOF or registration (REGO), or when equipment needs an inspection.',
   },
   {
+    title: 'Risk management',
+    description:
+      'Identify serious hazards, assess their risk and focus on what needs attention, making workplace risks easier to manage and review.',
+    icon: 'hazard',
+    detail:
+      'Focus on the hazards that matter most. Identify serious hazards, assess their risk and prioritise what needs attention, making risks easier to manage and review as your workplace changes.',
+  },
+  {
+    title: 'Contractor management',
+    description:
+      'Spend less time chasing paperwork. Collect, manage and approve contractor and supplier safety documents in one place.',
+    icon: 'phone-signal',
+    detail:
+      'Spend less time chasing paperwork. Collect, manage and approve contractor and supplier safety management documents in one place, so you can see what’s been provided and what still needs your attention.',
+  },
+  {
     title: 'Document control',
     description:
       'Give your health and safety documents a proper home, from insurance and company records to policies and procedures.',
