@@ -23,7 +23,7 @@ app:
   image:
     repository: ghcr.io/stay-safe-auditz-software-limited/public-site
     # Updated on main by the release workflow after a tagged image is published.
-    tag: "0.0.4"
+    tag: "0.0.5"
     pullPolicy: IfNotPresent
   containerPort: 8080
   tmp:
