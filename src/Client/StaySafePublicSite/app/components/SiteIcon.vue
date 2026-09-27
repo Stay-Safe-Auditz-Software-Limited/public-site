@@ -1,6 +1,9 @@
 <script setup lang="ts">
 defineProps<{ name: string }>()
 const paths: Record<string, string> = {
+  hazard: 'M12 3L2 21h20L12 3z M12 9v5 M12 17v.1',
+  'phone-signal':
+    'M13 10v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h6 M7 18h2 M15 7V5 M18 7V3 M21 7V1',
   people:
     'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M16 3a4 4 0 0 1 0 8 M22 21v-2a4 4 0 0 0-3-3.87 M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0',
   tool: 'M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0L21 6a6 6 0 0 1-7.9 7.9L5.5 21.5a2.1 2.1 0 0 1-3-3l7.6-7.6A6 6 0 0 1 18 3z',
