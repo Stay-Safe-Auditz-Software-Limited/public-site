@@ -2,7 +2,13 @@
 {{- $servicePort := .Values.app.service.port }}
 {{- $tlsMiddleware := printf "%s-https" $serviceName }}
 {{- $securityMiddleware := printf "%s-security-headers" $serviceName }}
+{{- $wwwMiddleware := printf "%s-www" $serviceName }}
+{{- $redirectToWww := and .Values.ingress.redirectToWww (kindIs "string" .Values.ingress.host) (not (hasPrefix "www." .Values.ingress.host)) }}
 {{- $hosts := concat (list .Values.ingress.host) .Values.ingress.additionalHosts }}
+{{- if $redirectToWww }}
+{{- $hosts = append $hosts (printf "www.%s" .Values.ingress.host) }}
+{{- end }}
+{{- $hosts = uniq $hosts }}
 {{- range $index, $host := $hosts }}
 {{- $setting := "ingress.host" }}
 {{- if gt $index 0 }}
@@ -20,7 +26,6 @@ metadata:
     {{- include "staysafePublicSite.labels" $ | nindent 4 }}
 spec:
   entryPoints:
-    - web
     - websecure
   tls:
     certResolver: {{ $.Values.traefik.certResolver }}
@@ -28,9 +33,36 @@ spec:
     - kind: Rule
       match: Host(`{{ required "ingress.host must be set" $host }}`)
       middlewares:
+        {{- if and $redirectToWww (eq $host $.Values.ingress.host) }}
+        - name: {{ $wwwMiddleware }}
+        {{- end }}
         - name: {{ $tlsMiddleware }}
         - name: {{ $securityMiddleware }}
       services:
         - name: {{ $serviceName }}
           port: {{ $servicePort }}
 {{- end }}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ printf "%s-http" ($serviceName | trunc 58 | trimSuffix "-") }}
+  labels:
+    {{- include "staysafePublicSite.labels" . | nindent 4 }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    {{- range $host := $hosts }}
+    - kind: Rule
+      match: Host(`{{ $host }}`)
+      middlewares:
+        {{- if and $redirectToWww (eq $host $.Values.ingress.host) }}
+        - name: {{ $wwwMiddleware }}
+        {{- end }}
+        - name: {{ $tlsMiddleware }}
+        - name: {{ $securityMiddleware }}
+      services:
+        - name: {{ $serviceName }}
+          port: {{ $servicePort }}
+    {{- end }}

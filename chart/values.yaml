@@ -11,9 +11,10 @@ externalSecrets:
     remoteKey: GITHUB_CONTAINER_REGISTRY_CONFIG
     version: latest
 ingress:
-  # Set by the deployment environment. This placeholder must not be deployed.
   # Use a bare lowercase hostname without https://, a port, or a path.
-  host: public-site.example.com
+  host: auditz.io
+  # Redirect the primary hostname to https://www.<host>, preserving path and query.
+  redirectToWww: true
   # Additional bare lowercase hostnames, using the same format as host.
   additionalHosts: []
 traefik:

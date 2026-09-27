@@ -22,3 +22,15 @@ spec:
     referrerPolicy: strict-origin-when-cross-origin
     stsSeconds: 31536000
     stsIncludeSubdomains: true
+{{- if and .Values.ingress.redirectToWww (kindIs "string" .Values.ingress.host) (not (hasPrefix "www." .Values.ingress.host)) }}
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ include "staysafePublicSite.fullname" . }}-www
+spec:
+  redirectRegex:
+    regex: {{ printf "^https?://%s(?::[0-9]+)?/(.*)$" (regexQuoteMeta .Values.ingress.host) | quote }}
+    replacement: {{ printf "https://www.%s/${1}" .Values.ingress.host | quote }}
+    permanent: true
+{{- end }}

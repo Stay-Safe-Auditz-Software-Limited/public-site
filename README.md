@@ -43,6 +43,10 @@ Set `ingress.host` and each `ingress.additionalHosts` entry to a bare lowercase 
 
 For example, an Argo CD Helm parameter should use `ingress.host = newweb.auditz.io`. Correct the deployment's Helm parameter or values override if it contains a URL; changing the chart default does not replace an override. Helm rejects invalid hostnames before rendering the IngressRoute.
 
+The default `ingress.host` is `auditz.io`, with `ingress.redirectToWww: true`. HTTP and HTTPS requests to `auditz.io` permanently redirect to `https://www.auditz.io`, preserving the path and query string. For example, `/help-centre.html?topic=jobs` keeps that exact suffix. The chart automatically creates the `www.auditz.io` route that serves the site, so it does not need an `additionalHosts` entry. Already-prefixed `www` hosts do not receive another prefix or loop. Additional hostnames continue to serve the site with HTTPS redirection only.
+
+For staging hosts that should serve directly, set `ingress.redirectToWww: false`. Before deploying the production hostname change, set any Argo CD `ingress.host` override to `auditz.io` and ensure both `auditz.io` and `www.auditz.io` resolve to Traefik and can obtain TLS certificates.
+
 ### Container publishing
 
 On Git tag pushes, the Quality workflow builds and pushes the Linux container after both the Nuxt and Helm quality jobs succeed. Pushes to `main` and pull requests run the quality checks without publishing.
