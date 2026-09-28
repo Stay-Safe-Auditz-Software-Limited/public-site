@@ -17,6 +17,12 @@ ingress:
   redirectToWww: true
   # Additional bare lowercase hostnames, using the same format as host.
   additionalHosts: []
+  # Entire legacy hostnames redirect to the target page with HTTP 301.
+  redirects:
+    - host: safely.nz
+      target: https://www.auditz.io/safely/
+    - host: www.safely.nz
+      target: https://www.auditz.io/safely/
 traefik:
   certResolver: le
 app:

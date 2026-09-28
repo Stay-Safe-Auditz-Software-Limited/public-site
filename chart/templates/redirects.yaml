@@ -1,0 +1,74 @@
+{{- $serviceName := include "staysafePublicSite.fullname" . }}
+{{- $servicePort := .Values.app.service.port }}
+{{- $securityMiddleware := printf "%s-security-headers" $serviceName }}
+{{- $servedHosts := concat (list .Values.ingress.host) .Values.ingress.additionalHosts }}
+{{- if and .Values.ingress.redirectToWww (kindIs "string" .Values.ingress.host) (not (hasPrefix "www." .Values.ingress.host)) }}
+{{- $servedHosts = append $servedHosts (printf "www.%s" .Values.ingress.host) }}
+{{- end }}
+{{- $redirectHosts := list }}
+{{- range $index, $redirect := .Values.ingress.redirects }}
+{{- $host := required (printf "ingress.redirects[%d].host must be set" $index) $redirect.host }}
+{{- $target := required (printf "ingress.redirects[%d].target must be set" $index) $redirect.target }}
+{{- if not (and (kindIs "string" $host) (le (len $host) 253) (regexMatch "^[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?)*$" $host)) }}
+{{- fail (printf "ingress.redirects[%d].host must be a bare lowercase DNS hostname" $index) }}
+{{- end }}
+{{- if or (has $host $servedHosts) (has $host $redirectHosts) }}
+{{- fail (printf "ingress.redirects[%d].host duplicates another ingress hostname" $index) }}
+{{- end }}
+{{- $redirectHosts = append $redirectHosts $host }}
+{{- if not (and (kindIs "string" $target) (regexMatch "^https://[a-z0-9]([-a-z0-9.]*[a-z0-9])?(/[^[:space:]]*)?$" $target)) }}
+{{- fail (printf "ingress.redirects[%d].target must be an absolute HTTPS URL" $index) }}
+{{- end }}
+{{- $baseName := printf "%s-%s" ($serviceName | trunc 35 | trimSuffix "-") ($host | replace "." "-") | trunc 54 | trimSuffix "-" }}
+{{- $name := printf "%s-redirect" $baseName }}
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ $name }}
+spec:
+  redirectRegex:
+    regex: {{ printf "^https?://%s(?::[0-9]+)?(?:[/?].*)?$" (regexQuoteMeta $host) | quote }}
+    replacement: {{ $target | quote }}
+    permanent: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ printf "%s-https" $baseName }}
+  labels:
+    {{- include "staysafePublicSite.labels" $ | nindent 4 }}
+spec:
+  entryPoints:
+    - websecure
+  tls:
+    certResolver: {{ $.Values.traefik.certResolver }}
+  routes:
+    - kind: Rule
+      match: Host(`{{ $host }}`)
+      middlewares:
+        - name: {{ $name }}
+        - name: {{ $securityMiddleware }}
+      services:
+        - name: {{ $serviceName }}
+          port: {{ $servicePort }}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ printf "%s-http" $baseName }}
+  labels:
+    {{- include "staysafePublicSite.labels" $ | nindent 4 }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`{{ $host }}`)
+      middlewares:
+        - name: {{ $name }}
+        - name: {{ $securityMiddleware }}
+      services:
+        - name: {{ $serviceName }}
+          port: {{ $servicePort }}
+{{- end }}
