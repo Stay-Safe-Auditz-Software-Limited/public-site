@@ -45,6 +45,8 @@ For example, an Argo CD Helm parameter should use `ingress.host = newweb.auditz.
 
 The default `ingress.host` is `auditz.io`, with `ingress.redirectToWww: true`. HTTP and HTTPS requests to `auditz.io` permanently redirect to `https://www.auditz.io`, preserving the path and query string. For example, `/help-centre.html?topic=jobs` keeps that exact suffix. The chart automatically creates the `www.auditz.io` route that serves the site, so it does not need an `additionalHosts` entry. Already-prefixed `www` hosts do not receive another prefix or loop. Additional hostnames continue to serve the site with HTTPS redirection only.
 
+`ingress.redirects` defines legacy hostnames that permanently redirect every path and query to one HTTPS target. The chart routes both HTTP and HTTPS for each hostname and asks Traefik's `le` certificate resolver for the HTTPS certificate. The defaults send `safely.nz` and `www.safely.nz` directly to `https://www.auditz.io/safely/` (the landing page's served URL). Before enabling these redirects in production, point both hostnames through Cloudflare to this Traefik ingress and confirm certificate issuance; chart routes alone do not change DNS or an existing Cloudflare/Weebly origin.
+
 For staging hosts that should serve directly, set `ingress.redirectToWww: false`. Before deploying the production hostname change, set any Argo CD `ingress.host` override to `auditz.io` and ensure both `auditz.io` and `www.auditz.io` resolve to Traefik and can obtain TLS certificates.
 
 ### Container publishing
