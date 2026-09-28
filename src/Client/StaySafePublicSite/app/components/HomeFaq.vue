@@ -34,8 +34,8 @@ const faqs: Faq[] = [
   {
     question: 'Can I see Auditz before subscribing?',
     answer:
-      'Yes. Book a demo to see how Auditz could work for your business. Email staysafe@auditz.co.nz to arrange a time.',
-    link: { label: 'Arrange a demo', to: 'mailto:staysafe@auditz.co.nz' },
+      'Yes. Request a demo to see how Auditz could work for your business or email staysafe@auditz.co.nz.',
+    link: { label: 'Arrange a demo', to: '/contact' },
   },
   {
     question: 'I use Safely. Am I in the right place?',
