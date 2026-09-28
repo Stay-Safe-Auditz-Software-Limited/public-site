@@ -14,7 +14,7 @@ const faqs: Faq[] = [
   {
     question: 'Is Auditz suitable for my industry?',
     answer:
-      'Auditz can be used across industries. Whether you work in construction, manufacturing, agriculture, transport or professional services, it helps you formalise your health and safety processes.',
+      'Auditz can be used across every industry. Whether you work in construction, manufacturing, agriculture, transport or professional services, it helps you formalise your health and safety processes.',
   },
   {
     question: 'What records can I manage?',
