@@ -6,7 +6,12 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   modules: ['@nuxt/eslint'],
   // Fallback documents stay out of search; real pages override this via usePageSeo.
-  app: { head: { meta: [{ name: 'robots', content: 'noindex, nofollow' }] } },
+  app: {
+    head: {
+      meta: [{ name: 'robots', content: 'noindex, nofollow' }],
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    },
+  },
   runtimeConfig: {
     public: {
       siteUrl: 'https://www.auditz.io',
