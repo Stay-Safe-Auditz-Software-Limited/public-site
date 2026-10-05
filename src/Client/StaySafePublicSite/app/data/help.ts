@@ -138,6 +138,6 @@ export const helpArticles: HelpArticle[] = [
 
 export const helpCategories = ['Getting started', 'Folder types'] as const
 export const appDownloads = {
-  android: 'https://play.google.com/store/apps/details?id=co.peaksoft.auditz',
+  android: 'https://play.google.com/store/search?q=auditz&c=apps&hl=en',
   apple: 'https://apps.apple.com/nz/app/auditz/id1534964805',
 }

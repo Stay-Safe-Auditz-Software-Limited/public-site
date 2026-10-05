@@ -62,13 +62,22 @@ usePageSeo({
             to download.
           </p>
           <div class="hero-actions">
-            <a class="button button--primary" :href="appDownloads.apple">
-              Download for Apple
-              <span aria-hidden="true">↗</span>
+            <a class="download-badge" :href="appDownloads.apple">
+              <img
+                src="/images/app-store-badge.svg"
+                alt="Download on the App Store"
+                width="180"
+                height="60"
+              />
             </a>
-            <a class="button button--secondary" :href="appDownloads.android">
-              Download for Android
-              <span aria-hidden="true">↗</span>
+            <a class="download-badge" :href="appDownloads.android">
+              <img
+                class="android-badge"
+                src="/images/google-play-badge.png"
+                alt="Get it on Google Play"
+                width="206"
+                height="80"
+              />
             </a>
           </div>
           <h2>Using the Safely version of Auditz?</h2>
@@ -102,3 +111,18 @@ usePageSeo({
     </div>
   </div>
 </template>
+
+<style scoped>
+.download-badge {
+  display: inline-flex;
+  align-items: center;
+}
+.download-badge img {
+  display: block;
+  width: 180px;
+  height: auto;
+}
+.download-badge .android-badge {
+  width: 206px;
+}
+</style>
