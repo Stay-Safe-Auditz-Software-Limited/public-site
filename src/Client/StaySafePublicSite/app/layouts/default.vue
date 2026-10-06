@@ -96,6 +96,7 @@ useHead({ htmlAttrs: { lang: 'en-NZ' } })
             <NuxtLink to="/features">Features</NuxtLink>
             <NuxtLink to="/pricing">Pricing</NuxtLink>
             <NuxtLink to="/about">About Auditz</NuxtLink>
+            <NuxtLink to="/brand-kit">Brand kit</NuxtLink>
           </div>
           <div>
             <h2>Let’s talk</h2>

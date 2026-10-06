@@ -8,6 +8,7 @@ export default defineEventHandler((event) => {
     '/features',
     '/pricing',
     '/about',
+    '/brand-kit',
     '/contact',
     '/safely',
     '/privacy-policy.html',
