@@ -90,24 +90,64 @@ const weights = [
         <article class="brand-asset">
           <div class="asset-stage">
             <img
-              class="cloud-mark"
-              src="/favicon.svg"
-              alt="Green cloud website icon"
-              width="64"
-              height="64"
+              src="/images/stay-safe-logo-reverse.png"
+              alt="Reverse-colour logo"
+              width="1000"
+              height="366"
             />
           </div>
           <div class="asset-details">
-            <h3>Cloud website icon</h3>
-            <p>
-              The simple green cloud used in the website’s browser tab. SVG stays sharp at any size.
-            </p>
+            <h3>Reverse-colour logo</h3>
+            <p>Green lettering and cloud for white or light backgrounds.</p>
             <a
               class="button button--secondary"
-              href="/favicon.svg"
-              download="auditz-cloud-icon.svg"
+              href="/images/stay-safe-logo-reverse.png"
+              download="stay-safe-logo-reverse.png"
             >
-              Download icon · SVG
+              Download reverse-colour logo · PNG
+            </a>
+          </div>
+        </article>
+        <article class="brand-asset">
+          <div class="asset-stage asset-stage--dark">
+            <img
+              src="/images/stay-safe-logo-white.png"
+              alt="All-white logo"
+              width="1000"
+              height="366"
+            />
+          </div>
+          <div class="asset-details">
+            <h3>All-white logo</h3>
+            <p>White artwork for black or dark backgrounds.</p>
+            <a
+              class="button button--secondary"
+              href="/images/stay-safe-logo-white.png"
+              download="stay-safe-logo-white.png"
+            >
+              Download all-white logo · PNG
+            </a>
+          </div>
+        </article>
+        <article class="brand-asset">
+          <div class="asset-stage">
+            <img
+              class="cloud-mark"
+              src="/images/auditz-cloud.png"
+              alt="Green Auditz cloud"
+              width="546"
+              height="366"
+            />
+          </div>
+          <div class="asset-details">
+            <h3>Green cloud</h3>
+            <p>The Auditz green cloud without lettering, supplied as a PNG.</p>
+            <a
+              class="button button--secondary"
+              href="/images/auditz-cloud.png"
+              download="auditz-cloud.png"
+            >
+              Download cloud · PNG
             </a>
           </div>
         </article>
