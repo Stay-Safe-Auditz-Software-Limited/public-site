@@ -119,7 +119,7 @@ const weights = [
           </div>
           <div class="asset-details">
             <h3>All-white logo</h3>
-            <p>White artwork for black or dark backgrounds.</p>
+            <p>White artwork.</p>
             <a
               class="button button--secondary"
               href="/images/stay-safe-logo-white.png"
